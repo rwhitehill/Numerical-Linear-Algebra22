@@ -1,0 +1,94 @@
+\def\duedate{09/29/22}
+\def\HWnum{1}
+\input{../preamble.tex}
+
+\setlength{\headheight}{14.9998pt}
+\addtolength{\topmargin}{-2.49998pt}
+
+\begin{document}
+    
+\prob{1}{
+Assume $x$ is an $m$-dimensional vector, prove $||x||_{\infty} \leq ||x||_{2}$ and $||x||_{2} \leq \sqrt{m} ||x||_{\infty}$.
+}
+
+Recall that 
+\begin{align}
+    \label{eq:norm-def}
+    ||x||_{2} &= \sqrt{\sum_{i=1}^{m} |x_{i}|^{2}} \\
+    ||x||_{\infty} &= \max \{ |x_1|,|x_2|, \ldots, |x_{m}| \} 
+.\end{align}
+
+Thus, for the first inequality we have the following.
+Suppose that $|x_{k}| = ||x||_{\infty}$, then
+\begin{eqnarray}
+    \label{eq:derive-1st-inequality}
+    \eqbox{
+    ||x||_{2} = \sqrt{||x||_{\infty}^2 + \sum_{i \ne k} |x_{i}|^2} \leq \sqrt{||x||_{\infty}^2} \leq ||x||_{\infty}
+}
+,\end{eqnarray}
+since $|x_{i}| \geq 0$ for all $i$.
+
+For the second inequality, we know that $|x_{i}| \leq ||x||_{\infty}$ for all $i$.
+Hence,
+\begin{eqnarray}
+    \label{eq:derive-2nd-inequality}
+    \eqbox{
+    ||x||_{2} \leq \sqrt{\sum_{i=1}^{m} ||x||_{\infty}^2} = \sqrt{m}||x||_{\infty} 
+}
+.\end{eqnarray}
+
+
+
+\prob{2}{
+Show that if a matrix $A$ is both triangular and unitary, then it is diagonal.
+}
+
+
+\prob{3}{
+Prove that matrix $\infty$-norm is
+\begin{eqnarray}
+    \label{eq:infty-norm-matrix}
+    ||A||_{\infty} = \max_{i} \sum_{j=1}^{n} |a_{ij}|
+.\end{eqnarray}
+}
+
+\prob{4}{
+    Let $|| \cdot ||$ denote any norm on $\complexs$ and also the induced matrix norm on $\complexs^{m \times m}$.
+Show that $\rho(A) \leq ||A||$, where $\rho$ is the spectral radius of $A$, which is the largest absolute value of an eigenvalue of $A$.
+}
+
+
+\prob{5}{
+Find $l_{1}$, $l_{2}$, and $l_{\infty}$ norms of the following vectors and matrices, also, please verify your results by MATLAB.
+}
+
+(a) $x = (3,-4,0,\frac{3}{2})^{\rm T}$
+
+(b) $\begin{pmatrix}
+    2 & -1 & 0 \\
+    -1 & 2 & -1 \\
+    0 & -1 & 2
+\end{pmatrix}
+$
+
+
+\prob{6}{
+Determine SVDs of the following matrices by hand calculation and MATLAB.
+}
+
+(a) $\begin{pmatrix}
+    3 & 0 \\
+    0 & -2
+\end{pmatrix}
+$
+(b) $
+\begin{pmatrix}
+    0 & 2 \\
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0
+\end{pmatrix}
+$
+
+
+\end{document}
