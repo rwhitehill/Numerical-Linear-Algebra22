@@ -1,0 +1,12 @@
+*.log
+*.aux
+*.toc
+*.synctex.gz
+.DS_Store
+*.ipynb_checkpoints
+*.fdb_latexmk
+*.fls
+*.out
+*.dvi
+*.ps
+__pycache__/
