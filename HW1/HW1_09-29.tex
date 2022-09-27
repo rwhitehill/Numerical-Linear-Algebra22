@@ -43,6 +43,27 @@ Hence,
 Show that if a matrix $A$ is both triangular and unitary, then it is diagonal.
 }
 
+Suppose that $A = (a_{ij}) \in \complexs^{n \times n}$ is an upper triangular matrix we know that $a_{ij} = 0$ if $i > j$.
+Furthermore, we know that $A A^{\dagger} = A^{\dagger}A = 1$.
+Using the definition of matrix multiplication, we see that
+\begin{eqnarray}
+    \label{eq:A-Adag}
+    (A^{\dagger} A)_{ij} = \sum_{k=1}^{n} a_{ki}^{*}a_{kj} = \delta_{ij} 
+,\end{eqnarray}
+where $\displaystyle \delta_{ij} = \begin{cases}
+    1 & i = j \\
+    0 & i \ne j
+\end{cases}$.
+Since $A$ is upper triangular, it immediately follows that $A^{\dagger}$ is lower triangular. 
+Hence, we find that $(A^{\dagger}A)_{11} = 1 = |a_{11}|^2$ or that $|a_{11}| = 1$.
+Next, we observe that $(A^{\dagger} A)_{12} = 0 = a_{11}^{*}a_{12}$, which implies that $a_{12} = 0$.
+Suppose that it is true that $a_{12},\ldots,a_{1 m} = 0$ for some $m < n$, then $(A^{\dagger} A)_{1,m+1} = 0 = a_{1 1}^{*}a_{1,m + 1}$, which implies that $a_{1,m+1} = 0$.
+This argument can be continued for the elements above the diagonal of $A$ for each row.
+Hence, $a_{ij} = 0$ if $i > j$.
+
+Now suppose that $A$ is lower triangular and unitary.
+Then, $A^{\dagger}$ is upper triangular and unitary, which implies that $A^{\dagger}$ is diagonal.
+It immediately follows then that $A$ is diagonal. 
 
 \prob{3}{
 Prove that matrix $\infty$-norm is
@@ -51,6 +72,8 @@ Prove that matrix $\infty$-norm is
     ||A||_{\infty} = \max_{i} \sum_{j=1}^{n} |a_{ij}|
 .\end{eqnarray}
 }
+
+
 
 \prob{4}{
     Let $|| \cdot ||$ denote any norm on $\complexs$ and also the induced matrix norm on $\complexs^{m \times m}$.
