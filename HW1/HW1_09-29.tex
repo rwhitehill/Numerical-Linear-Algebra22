@@ -110,12 +110,52 @@ Prove that matrix $\infty$-norm is
 .\end{eqnarray}
 }
 
+Let $A = \begin{pmatrix}
+    a_{11} & \ldots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    a_{m_1} & \ldots & a_{mn}
+\end{pmatrix}
+$
+Let $v \in \complexs^{n}$, then
+\begin{eqnarray}
+    \label{eq:Av}
+    Av = \begin{pmatrix}
+    \sum_{k=1}^{n} a_{1k}v_{k} \\
+        \vdots \\
+        \sum_{k=1}^{n} a_{mk}v_{k}
+    \end{pmatrix}
+,\end{eqnarray}
+and
+\begin{eqnarray}
+    \label{eq:infty-norm-Av}
+    || Av ||_{\infty} = \max_{i} \Bigg|\sum_{k=1}^{n} a_{ik}v_{k}\Bigg| \leq \max_{i} \sum_{k=1}^{n} |a_{ik}||v_{k}|
+.\end{eqnarray}
+Furthermore,
+\begin{eqnarray}
+    \label{eq:infty-norm-Av-div-norm-v}
+    \frac{||Av||_{\infty}}{||v||_{\infty}} \leq \max_{i} \sum_{k=1}^{n} |a_{ik}|\frac{|v_{k}|}{||v||_{\infty}} \leq \max_{i} \sum_{k=1}^{n} |a_{ik}|
+,\end{eqnarray}
+
+Now, we will show that $||A||_{\infty}$ attains this maximum for some choice of $v$.
+Consider $v$ such that $\displaystyle v_{k} = \frac{|a_{ik}|}{a_{ik}}$ for some $i = 1,\ldots,n$ (unless $a_{ik} = 0$, in which case we choose $v_{k} = 0$).
+Then, 
+\begin{eqnarray}
+    \label{eq:Av-particular-v}
+    (Av)_{i} = \sum_{k=1}^{n} |a_{ik}|
+.\end{eqnarray}
+Obviously, we can choose $i$ such that it attains the maximum from \eref{infty-norm-Av-div-norm-v}, which proves our claim that $||A||_{\infty}$ is the maximum absolute row sum of $A$.
+
 
 
 \prob{4}{
     Let $|| \cdot ||$ denote any norm on $\complexs$ and also the induced matrix norm on $\complexs^{m \times m}$.
 Show that $\rho(A) \leq ||A||$, where $\rho$ is the spectral radius of $A$, which is the largest absolute value of an eigenvalue of $A$.
 }
+
+Suppose $x$ is an eigenvector of $A$ with a corresponding eigenvalue $\lambda$.
+That is, $Ax = \lambda x$.
+Further, suppose that $||x|| = 1$, which is a valid choice since if $x$ is an eigenvector of $A$ then $x/||x||$ is also an eigenvector of $A$ with the same eigenvalue.
+Then $||A|| \geq ||Ax|| = ||\lambda x|| = |\lambda|$, which is true for all eigenvalues $\lambda$ of $A$.
 
 
 \prob{5}{
@@ -124,13 +164,67 @@ Find $l_{1}$, $l_{2}$, and $l_{\infty}$ norms of the following vectors and matri
 
 (a) $x = (3,-4,0,\frac{3}{2})^{\rm T}$
 
+The hand calculations are as follows:
+\begin{eqnarray}
+    \label{eq:norms-vec}
+    \eqbox{
+    \begin{aligned}
+        &||x||_{1} = |3| + |-4| + |0| + \Big|\frac{3}{2}\Big| = \frac{17}{2} \\
+        &||x||_{2} = \sqrt{|3|^2 + |-4|^2 + |0|^2 + \Big|\frac{3}{2}\Big|^2} = \frac{\sqrt{109}}{2} \\
+        &||x||_{\infty} = \max \{ |3|,|-4|,|0|,\Big|\frac{3}{2}\Big| \} = 4
+    .\end{aligned}
+}
+\end{eqnarray}
+
+The computer calculations are shown below as a screenshot of the code and the output:
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{prob5-a.png} 
+\end{center}
+
+
 (b) $\begin{pmatrix}
     2 & -1 & 0 \\
     -1 & 2 & -1 \\
     0 & -1 & 2
-\end{pmatrix}
-$
+\end{pmatrix}$
 
+Let the matrix above be denoted by $A$.
+
+The hand calculations are as follows:
+\begin{eqnarray}
+    \label{eq:norms-mat}
+    \eqbox{
+    \begin{aligned}
+        &||A||_{1} = \max \{|2|+|-1|+|0|,~|-1|+|2|+|-1|,|0|+|-1|+|2|\} = 4 \\
+        &||A||_{2} = \sqrt{A^{\rm T}A} = \sqrt{4\sqrt{2} + 6} \\
+        &||A||_{\infty} = 4
+    .\end{aligned}
+    }
+\end{eqnarray}
+Note that $A$ is symmetric, so its 1 and $\infty$ norms are the same.
+
+The work for the 2-norm of $A$ is as follows.
+First, we obtain
+\begin{eqnarray}
+    \label{eq:AT-A}
+    A^{\rm T}A = \begin{pmatrix}5 & -4 & 1\\-4 & 6 & -4\\1 & -4 & 5\end{pmatrix}
+.\end{eqnarray}
+Then we find the eigenvalues by solving the characteristic equation
+\begin{eqnarray}
+    \label{eq:char-eq}
+    {\rm det}(A^{\rm T}A - \lambda\id) = - \lambda^{3} + 16 \lambda^{2} - 52 \lambda + 16 = 0
+,\end{eqnarray}
+which has solutions
+\begin{eqnarray}
+    \label{eq:eigvals-ATA}
+    \lambda \in \{ 4,6 \pm 4\sqrt{2} \}  
+.\end{eqnarray}
+
+The computer calculations are shown below as a screenshot of the code and output:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{prob5-b.png} 
+\end{center}
 
 \prob{6}{
 Determine SVDs of the following matrices by hand calculation and MATLAB.
@@ -141,6 +235,73 @@ Determine SVDs of the following matrices by hand calculation and MATLAB.
     0 & -2
 \end{pmatrix}
 $
+
+First, we solve the eigenproblem for $A^{\rm T}A$, where we denote the matrix above as $A$.
+\begin{eqnarray}
+    \label{eq:AT-A_6}
+    A^{\rm T}A = \begin{pmatrix}9 & 0\\0 & 4\end{pmatrix} 
+.\end{eqnarray}
+Then the characteristic equation is
+\begin{eqnarray}
+    \label{eq:char-eq_6}
+    \lambda^{2} - 13 \lambda + 36 = 0 \Rightarrow \lambda \in \{4,9\}
+.\end{eqnarray}
+Now, we find the eigenvectors by solving $(A^{\rm T}A - \lambda\id)x = 0$ for each eigenvalue $x$.
+This is done using the \textit{sympy} package in python:
+\begin{align}
+    \label{eq:corresponding-eigvec_6}
+    &\lambda = 9: \quad x = \begin{pmatrix} 1 & 0 \end{pmatrix}^{\rm T} \\
+    &\lambda = 4: \quad x = \begin{pmatrix} 0 & 1 \end{pmatrix}^{\rm T}
+.\end{align}
+Hence
+\begin{eqnarray}
+    \label{eq:Sig-V_6}
+    \eqbox{
+    \Sigma = \begin{pmatrix}
+        3 & 0 \\
+        0 & 2 
+    \end{pmatrix}
+    \quad
+    V = \id_{2 \times 2} 
+}
+.\end{eqnarray}
+Finally, we find the columns of $U$ by solving $u_{j} = Av_{j}/\sigma_{j}$ for $j = 1,2$:
+\begin{align}
+    \label{eq:U-vecs_6}
+    u_{1} &= \frac{1}{3}\begin{pmatrix}
+        3 & 0 \\
+        0 & -2 
+    \end{pmatrix}
+    \begin{pmatrix}
+    1 \\ 0
+    \end{pmatrix}
+    = 1  \\
+    u_{2} &= \frac{1}{2}\begin{pmatrix}
+        3 & 0 \\
+        0 & -2
+    \end{pmatrix}
+    \begin{pmatrix}
+    0 & -1   
+    \end{pmatrix}
+    = -1
+,\end{align}
+which means
+\begin{eqnarray}
+    \label{eq:U_6}
+    \eqbox{
+    U = \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix}
+}
+.\end{eqnarray}
+
+The code and output is shown in the screenshot below:
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{prob6-a.png}
+\end{center}
+
+
 (b) $
 \begin{pmatrix}
     0 & 2 \\
@@ -149,6 +310,42 @@ $
     0 & 0
 \end{pmatrix}
 $
+
+We perform the SVD in the same way as above.
+First, we diagonalize $A^{\rm T}A = \begin{pmatrix}0 & 0 \\ 0 & 4\end{pmatrix}$.
+Incidentally, $A^{\rm T}A$ is already diagonal, so we can read off its eigenvalues and eigenvectors directly: $\lambda \in \{ 0,4 \} $ with corresponding eigenvectors $\begin{pmatrix}1 & 0\end{pmatrix}^{\rm T}$ and $\begin{pmatrix}0 & 1\end{pmatrix}^{\rm T}$.
+Now we can write down our matrices for the SVD as follows
+\begin{eqnarray}
+    \label{eq:SVD-matrices}
+    \eqbox{
+    U = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 
+    \end{pmatrix}
+    \quad
+    \Sigma = 
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & 0 \\
+        0 & 0 \\
+        0 & 0 
+    \end{pmatrix}
+    \quad
+    V = 
+    \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}
+    }
+.\end{eqnarray}
+
+The code and output is shown in the screenshot below:
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{prob6-b.png}
+\end{center}
 
 
 \end{document}
