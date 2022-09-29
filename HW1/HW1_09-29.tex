@@ -143,7 +143,9 @@ Then,
     \label{eq:Av-particular-v}
     (Av)_{i} = \sum_{k=1}^{n} |a_{ik}|
 .\end{eqnarray}
-Obviously, we can choose $i$ such that it attains the maximum from \eref{infty-norm-Av-div-norm-v}, which proves our claim that $||A||_{\infty}$ is the maximum absolute row sum of $A$.
+Obviously, we can choose $i$ such that it attains the maximum from \eref{infty-norm-Av-div-norm-v}.
+Now, this is just one component of the vector $Av$, so $||Av||_{\infty} \geq (Av)_{i}$.
+Hence, we have proven our claim that $||A||_{\infty}$ is the maximum absolute row sum of $A$.
 
 
 
@@ -177,11 +179,6 @@ The hand calculations are as follows:
 \end{eqnarray}
 
 The computer calculations are shown below as a screenshot of the code and the output:
-
-\begin{center}
-\includegraphics[width=0.8\textwidth]{prob5-a.png} 
-\end{center}
-
 
 (b) $\begin{pmatrix}
     2 & -1 & 0 \\
@@ -221,10 +218,14 @@ which has solutions
     \lambda \in \{ 4,6 \pm 4\sqrt{2} \}  
 .\end{eqnarray}
 
-The computer calculations are shown below as a screenshot of the code and output:
+The code for parts (a) and (b) of this problem is shown below along with a screenshot of the output:
+
+\inputpython{prob5.py}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{prob5-b.png} 
+\includegraphics[width=0.3\textwidth]{prob5.png} 
 \end{center}
+
+
 
 \prob{6}{
 Determine SVDs of the following matrices by hand calculation and MATLAB.
@@ -246,8 +247,7 @@ Then the characteristic equation is
     \label{eq:char-eq_6}
     \lambda^{2} - 13 \lambda + 36 = 0 \Rightarrow \lambda \in \{4,9\}
 .\end{eqnarray}
-Now, we find the eigenvectors by solving $(A^{\rm T}A - \lambda\id)x = 0$ for each eigenvalue $x$.
-This is done using the \textit{sympy} package in python:
+Now, we find the eigenvectors of $A^{\rm T}A$ for each eigenvalue $x$, which are trivial to read off since $A^{\rm T}A$ is diagonal:
 \begin{align}
     \label{eq:corresponding-eigvec_6}
     &\lambda = 9: \quad x = \begin{pmatrix} 1 & 0 \end{pmatrix}^{\rm T} \\
@@ -296,12 +296,6 @@ which means
 }
 .\end{eqnarray}
 
-The code and output is shown in the screenshot below:
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{prob6-a.png}
-\end{center}
-
-
 (b) $
 \begin{pmatrix}
     0 & 2 \\
@@ -342,9 +336,11 @@ Now we can write down our matrices for the SVD as follows
     }
 .\end{eqnarray}
 
-The code and output is shown in the screenshot below:
+The code for parts (a) and (b) of this problem is shown below along with a screenshot of the output:
+
+\inputpython{prob6.py}
 \begin{center}
-    \includegraphics[width=0.8\textwidth]{prob6-b.png}
+    \includegraphics[width=0.3\textwidth]{prob6.png}
 \end{center}
 
 
