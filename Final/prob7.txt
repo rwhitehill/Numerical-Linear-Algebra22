@@ -1,0 +1,25 @@
+
+  Explicit inverse:
+    exact solution: [  0.5      1.       1.5    ... 244.1809 231.5149 182.8787]
+    time: 0.0265 s
+
+  LU factorization
+    approximate solution: None
+    error: 6.89619e-13
+    time: 21.0434 s
+
+  Jacobi iteration
+    approximate solution (29 iterations): [  0.5      1.       1.5    ... 244.1809 231.5149 182.8787]
+    error: 2.95795e-06
+    time: 3.5373 s
+
+  Gauss-Seidel iteration
+    approximate solution (18 iterations): [  0.5      1.       1.5    ... 244.1809 231.5149 182.8787]
+    error: 2.76352e-06
+    time: 2.5009 s
+
+  Conjugate gradient iteration
+    approximate solution (23 iterations): [  0.5      1.       1.5    ... 244.1809 231.5149 182.8787]
+    error: 2.00088e-11
+    time: 0.0155 s
+
